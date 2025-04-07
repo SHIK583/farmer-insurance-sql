@@ -1,6 +1,6 @@
 use assignment;
 /*drop table data*/
-select * from data
+select * from data;
 /* SELECTQueries [5 marks]
 1. Retrieve the names of all states (srcStateName).
 */
@@ -36,18 +36,18 @@ amount to bepaid for each state where the insured land area is greater than 5.0 
 select sum(TotalFarmersCovered) as TotalFarmersCovered, sum(GrossPremiumAmountToBePaid)  as GrossPremiumAmountToBePaid
 , srcStateName  from data
 where YearCode=2018 and InsuredLandArea > 5.0 
-group by srcStateName
+group by srcStateName;
 
 /* Aggregation*/
 /* Calculate averageInsuredLandAreafor each year*/
 
 select  avg(InsuredLandArea) as insuredlandyear , srcYear from data 
- group by srcYear
+ group by srcYear;
  
  /*Calculate TotalFarmersCovered for each district where InsuranceUnits > 0 */
  select sum(TotalFarmersCovered) as TotalFarmersCovered, srcDistrictName
  from data 
- where Insuranceunits > 0
+ where Insuranceunits > 0;
  
  /*Calculate total premiums andTotalFarmersCovered for each state where totalSumInsured >5,00,000INR. confused*/
  
