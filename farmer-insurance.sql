@@ -1,5 +1,5 @@
 use assignment;
-drop table data
+/*drop table data*/
 select * from data
 /* SELECTQueries [5 marks]
 1. Retrieve the names of all states (srcStateName).
@@ -48,9 +48,24 @@ select  avg(InsuredLandArea) as insuredlandyear , srcYear from data
  select sum(TotalFarmersCovered) as TotalFarmersCovered, srcDistrictName
  from data 
  where Insuranceunits > 0
- group by srcDistrictName
  
- DESC data;
+ /*Calculate total premiums andTotalFarmersCovered for each state where totalSumInsured >5,00,000INR. confused*/
+ 
+ /*IV.  Sorting Data (ORDER BY) [10 marks]
+ 10. Retrieve the top 5 districts with the highest total population in 2020.
+ 11. RetrievesrcStateName,srcDistrictName, andSumInsuredfor the 10 districts
+ with lowestnon-zero farmers’ premium amount, ordered by insured sum and premium amount.
+ 12. Retrieve top 3 states for each year with highest insured farmers to total population ratio, orderedby
+ the ratio*/
+ 
+ select srcDistrictname, sum(TotalPopulation) as TotalPopulation
+ from data
+ where YearCode= 2020
+ group by srcDistrictname
+ order by TotalPopulation desc limit 5;
+ 
+ 
+
 
 
 
