@@ -47,11 +47,13 @@ select  avg(InsuredLandArea) as insuredlandyear , srcYear from data
  /*Calculate TotalFarmersCovered for each district where InsuranceUnits > 0 */
  select sum(TotalFarmersCovered) as TotalFarmersCovered, srcDistrictName
  from data 
- where Insuranceunits > 0;
+ where Insuranceunits > 0
+ group by srcDistrictName;
  
- /*Calculate total premiums andTotalFarmersCovered for each state where totalSumInsured >5,00,000INR. confused*/
- 
- /*IV.  Sorting Data (ORDER BY) [10 marks]
+ /*Calculate total premiums andTotalFarmersCovered for each state where totalSumInsured >5,00,000INR. */
+SELECT srcStateName,SUM(FarmersPremiumAmount) AS TotalFarmersPremium,SUM(StatePremiumAmount) AS TotalStatePremium,SUM(GOVPremiumAmount) AS TotalGOVPremium,
+SUM(TotalFarmersCovered) AS TotalFarmersCovered FROM data WHERE SumInsured > 500000 GROUP BY srcStateName;
+/*IV.  Sorting Data (ORDER BY) [10 marks]
  10. Retrieve the top 5 districts with the highest total population in 2020.
  */
  select srcDistrictname, sum(TotalPopulation) as TotalPopulation
